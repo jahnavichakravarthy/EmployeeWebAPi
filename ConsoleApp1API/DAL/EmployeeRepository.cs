@@ -30,8 +30,10 @@ namespace ConsoleApp1API.DAL
         public bool InsertEmployee(Employee employee)
         {
             //int rowsAffected = this._db.Execute(@"INSERT INTO EMPLOYEES(Id, Name, Age, Salary) Values(@Id, @Name, @Age, @Salary)"); //new { CustomerFirstName = ourCustomer.CustomerFirstName, CustomerLastName = ourCustomer.CustomerLastName, IsActive = true });
-            int rowsAffected = this._db.Execute(@"INSERT Customer([Id],[Name],[Age],[Salary]) values (@Id, @Name, @Age, @Salary)", new { Id = employee.Id, Name = employee.Name, Age = employee.Age, Salary = employee.Salary });
-            if (rowsAffected > 0)
+            //int rowsAffected = this._db.Execute(@"INSERT Customer([Id],[Name],[Age],[Salary]) values (@Id, @Name, @Age, @Salary)", new { Id = employee.Id, Name = employee.Name, Age = employee.Age, Salary = employee.Salary });
+            string sqlQuery = "INSERT INTO EMPLOYEES (Id, Name, Age, Salary) Values (@Id, @Name, @Age, @Salary);";
+                int rowsAffected = db.Execute(sqlQuery, employee);
+           if (rowsAffected > 0)
             {
                 return true;
             }
