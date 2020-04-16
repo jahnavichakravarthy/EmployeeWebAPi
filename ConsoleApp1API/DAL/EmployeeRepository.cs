@@ -24,7 +24,7 @@ namespace ConsoleApp1API.DAL
             public Employee GetSingleEmployee(string employeeId)
         {
             return _db.Query<Employee>("Select * From EMPLOYEES" +
-                " WHERE Id = @Id ", new { employeeId }).SingleOrDefault();
+                " WHERE Id = @Id ", new { Id = employeeId }).SingleOrDefault();
         }
 
         public bool InsertEmployee(Employee employee)
